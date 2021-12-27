@@ -1,3 +1,4 @@
+# I'm a beginner. Please don't hate me
 from tkinter import ttk
 from tkinter import filedialog
 import youtube_dl
@@ -50,8 +51,8 @@ def started():
                     ydl.download([f"ytsearch:{input.get()}"])
         elif selected.get() == 2:
             ydl_options = {'format': 'bestvideo[ext=mp4]+bestaudio[ext=m4a]', 'noplaylist': 'True',
-                           'outtmpl': str(filename) + "/%(title)s" + ".%(ext)s",
-                           'progress_hooks': [my_hook],
+                           "outtmpl": str(filename) + "/%(title)s" + ".%(ext)s",
+                           "progress_hooks": [my_hook],
                            "ffmpeg_location": "C:/ffmpeg"}
             if input.get().count(".com") == 1:
                 with youtube_dl.YoutubeDL(ydl_options) as ydl:
