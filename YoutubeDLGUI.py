@@ -25,7 +25,7 @@ def threadmanager():
 def my_hook(d):
     global progress
     if d["status"] == "downloading":
-        progress = "Fortschritt:" + d["_percent_str"] + " Verbleibende Zeit: " + d["_eta_str"] + "  " + d["_speed_str"]
+        progress = "Progress:" + d["_percent_str"] + "  Remaining: " + d["_eta_str"] + "  Speed: " + d["_speed_str"]
     elif d["status"] == "finished":
         progress = "Finished downloading in " + d["_elapsed_str"]
     msg.config(text=progress)
