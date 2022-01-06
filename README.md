@@ -1,7 +1,7 @@
 # YoutubeDLGUI
 A simple GUI for youtube-dl using Tkinter.
 
-![image](https://user-images.githubusercontent.com/92184648/148385164-76a129d4-3466-4818-8b4e-6c0ccf0bb8fa.png)
+![image](https://user-images.githubusercontent.com/92184648/148385686-13af2ca3-d184-4aab-98be-c26693f89746.png)
 
 ## Installation
     git clone https://github.com/reiluk/YoutubeDLGUI/
