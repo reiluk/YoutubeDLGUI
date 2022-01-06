@@ -39,7 +39,7 @@ def started():
         if selected.get() == 1:
             ydl_options = {"format": "bestaudio", "noplaylist": "True",
                            "outtmpl": str(filename) + "/%(title)s" + ".%(ext)s",
-                           "ffmpeg_location": "C:/ffmpeg",
+                           #"ffmpeg_location": "C:/ffmpeg",
                            "progress_hooks": [my_hook],
                            "postprocessors": [{"key": "FFmpegExtractAudio", "preferredcodec": "mp3"}]}
             if input.get().count(".com") == 1:
@@ -51,8 +51,8 @@ def started():
         elif selected.get() == 2:
             ydl_options = {"format": "bestvideo[ext=mp4]+bestaudio[ext=m4a]", "noplaylist": "True",
                            "outtmpl": str(filename) + "/%(title)s" + ".%(ext)s",
-                           "progress_hooks": [my_hook],
-                           "ffmpeg_location": "C:/ffmpeg"}
+                           #"ffmpeg_location": "C:/ffmpeg",
+                           "progress_hooks": [my_hook]}
             if input.get().count(".com") == 1:
                 with youtube_dl.YoutubeDL(ydl_options) as ydl:
                     ydl.download([input.get()])
