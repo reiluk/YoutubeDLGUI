@@ -15,9 +15,9 @@ or
     pip install ttkthemes
 ### FFmpeg
 YoutubeDLGUI requires a FFmpeg installation for converting the download to MP3/MP4.
-Download FFmpeg from https://www.ffmpeg.org/download.html and add the directory containing the FFmpeg binaries to your PATH environment variable.
+Download FFmpeg from [here](https://www.ffmpeg.org/download.html) and add the directory containing the FFmpeg binaries to your PATH environment variable.
 
-Alternatively, you can specify the path of your FFmpeg installation in "YoutubeDLGUI.py" (line 42 and 54).
+Alternatively, you can specify the path of your FFmpeg installation in "YoutubeDLGUI.py" (line [42](https://github.com/reiluk/YoutubeDLGUI/blob/377f92922004a508d8d38bcbc03cec7e3c4568cb/YoutubeDLGUI.py#L42) and [54](https://github.com/reiluk/YoutubeDLGUI/blob/377f92922004a508d8d38bcbc03cec7e3c4568cb/YoutubeDLGUI.py#L54)).
 For Instance:
 
     "ffmpeg_location": "C:/ffmpeg",
