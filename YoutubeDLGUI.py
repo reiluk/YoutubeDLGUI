@@ -61,7 +61,7 @@ def started():
                     ydl.download([f"ytsearch:{input.get()}"])
         else:
             error.config(text="Select a format!")
-    except youtube_dl.utils.DownloadError:
+    except yt_dlp.utils.DownloadError:
         error.config(text="Title or URL missing!")
     error.pack()
 
