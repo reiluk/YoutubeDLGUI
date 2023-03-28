@@ -1,5 +1,5 @@
 # YoutubeDLGUI
-A simple GUI for youtube-dl using Tkinter.
+A simple GUI for yt-dlp using Tkinter.
 
 ![image](https://user-images.githubusercontent.com/92184648/148385686-13af2ca3-d184-4aab-98be-c26693f89746.png) ![image](https://user-images.githubusercontent.com/92184648/148389036-bc71d862-acea-46ba-b3e4-37c28986132f.png)
 
@@ -11,7 +11,7 @@ A simple GUI for youtube-dl using Tkinter.
     pip install -r requirements.txt
 or
     
-    pip install youtube_dl
+    pip install yt-dlp
     pip install ttkthemes
 ### FFmpeg
 YoutubeDLGUI requires a FFmpeg installation for converting the download to MP3/MP4.
