@@ -1,12 +1,12 @@
 from tkinter import ttk
 from tkinter import filedialog
-import youtube_dl
+import yt_dlp
 from ttkthemes import ThemedTk
 import tkinter as tk
 import threading
+import os
 
-
-filename = ""
+filename = os.getcwd()
 progress = ""
 
 
@@ -25,9 +25,9 @@ def threadmanager():
 def my_hook(d):
     global progress
     if d["status"] == "downloading":
-        progress = "Progress:" + d["_percent_str"] + "  Remaining: " + d["_eta_str"] + "  Speed: " + d["_speed_str"]
+        progress = "Progress:" + d["_percent_str"].replace("\x1b[0;94m", "").replace("\x1b[0m", "") + "  Speed: " + d["_speed_str"].replace("\x1b[0;32m", "").replace("\x1b[0m", "")
     elif d["status"] == "finished":
-        progress = "Finished downloading in " + d["_elapsed_str"]
+        progress = "Finished downloading!"
     msg.config(text=progress)
     msg.pack()
 
@@ -37,32 +37,30 @@ def started():
     error.pack()
     try:
         if selected.get() == 1:
-            ydl_options = {"format": "bestaudio", "noplaylist": "True",
+            ydl_options = {"format": "bestaudio",
                            "outtmpl": str(filename) + "/%(title)s" + ".%(ext)s",
                            #"ffmpeg_location": "C:/ffmpeg",
                            "progress_hooks": [my_hook],
                            "postprocessors": [{"key": "FFmpegExtractAudio", "preferredcodec": "mp3"}]}
             if input.get().count(".com") == 1:
-                with youtube_dl.YoutubeDL(ydl_options) as ydl:
+                with yt_dlp.YoutubeDL(ydl_options) as ydl:
                     ydl.download([input.get()])
             else:
-                with youtube_dl.YoutubeDL(ydl_options) as ydl:
+                with yt_dlp.YoutubeDL(ydl_options) as ydl:
                     ydl.download([f"ytsearch:{input.get()}"])
         elif selected.get() == 2:
-            ydl_options = {"format": "bestvideo[ext=mp4]+bestaudio[ext=m4a]", "noplaylist": "True",
+            ydl_options = {"format": "bestvideo[ext=mp4]+bestaudio[ext=m4a]",
                            "outtmpl": str(filename) + "/%(title)s" + ".%(ext)s",
                            #"ffmpeg_location": "C:/ffmpeg",
                            "progress_hooks": [my_hook]}
             if input.get().count(".com") == 1:
-                with youtube_dl.YoutubeDL(ydl_options) as ydl:
+                with yt_dlp.YoutubeDL(ydl_options) as ydl:
                     ydl.download([input.get()])
             else:
-                with youtube_dl.YoutubeDL(ydl_options) as ydl:
+                with yt_dlp.YoutubeDL(ydl_options) as ydl:
                     ydl.download([f"ytsearch:{input.get()}"])
         else:
             error.config(text="Select a format!")
-    except NameError:
-        error.config(text="Select a Directory!")
     except youtube_dl.utils.DownloadError:
         error.config(text="Title or URL missing!")
     error.pack()
@@ -85,6 +83,7 @@ MP4 = ttk.Radiobutton(root, text="MP4", value=2, variable=selected)
 MP3.pack()
 MP4.pack()
 folder_path = tk.StringVar()
+folder_path.set(filename)
 br = ttk.Label(root, textvariable=folder_path)
 br.pack()
 br2 = ttk.Button(text="Browse", command=browse_button)
